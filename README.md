@@ -4,7 +4,7 @@ FinSync is a modern financial management platform that helps users track, analyz
 
 ## 🌐 Live Demo
 
-🔗 Website: [https://fin-sync-xi.vercel.app/](https://fin-sync-xi.vercel.app/)
+🔗 Website: [https://fin-sync-weld.vercel.app/](https://fin-sync-weld.vercel.app/)
 
 ## 🔐 Demo Credentials
 
