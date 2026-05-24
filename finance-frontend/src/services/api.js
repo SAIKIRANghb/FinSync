@@ -1,7 +1,15 @@
 import axios from 'axios';
 
 // Base API configuration
-const API_BASE_URL = 'http://localhost:3000/api';
+const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+const fallbackBaseUrl = 'http://localhost:5000';
+
+const withApiVersion = (baseUrl) => {
+  const normalizedBaseUrl = baseUrl.replace(/\/+$/, '');
+  return normalizedBaseUrl.endsWith('/v1') ? normalizedBaseUrl : `${normalizedBaseUrl}/v1`;
+};
+
+export const API_BASE_URL = withApiVersion(configuredBaseUrl || fallbackBaseUrl);
 
 // Create axios instance with base configuration
 const api = axios.create({
@@ -60,7 +68,7 @@ export const transactionsAPI = {
   create: (transaction) => api.post('/transactions', transaction),
   update: (id, transaction) => api.put(`/transactions/${id}`, transaction),
   delete: (id) => api.delete(`/transactions/${id}`),
-  getCategories: () => api.get('/transactions/categories'),
+  getCategories: () => api.get('/categories'),
   getStats: () => api.get('/transactions/stats'),
 };
 
