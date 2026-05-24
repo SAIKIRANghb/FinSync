@@ -41,6 +41,8 @@ module.exports = {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      readPreference: 'primary',
+      serverSelectionTimeoutMS: 10000,
     },
   },
   jwt: {
