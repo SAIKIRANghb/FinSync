@@ -14,10 +14,10 @@ import {
 } from "@mui/material";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "../components/Dashboard/Layout";
+import { API_BASE_URL } from "../services/api";
 
 const incomeCategories = ["Salary", "Bonus", "Interest", "Investment"];
 const expenseCategories = ["Food", "Transport", "Rent", "Utilities", "Health"];
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const getLocalDateTimeString = () => {
   const now = new Date();

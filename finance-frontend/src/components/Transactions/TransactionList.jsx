@@ -29,8 +29,7 @@ import { format } from "date-fns";
 import axios from "axios";
 import { useToast } from "@/hooks/use-toast";
 import EditTransactionModal from "./EditTransactionModal";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { API_BASE_URL } from "@/services/api";
 
 const TransactionList = ({ onEdit, onDelete }) => {
   const { toast } = useToast();

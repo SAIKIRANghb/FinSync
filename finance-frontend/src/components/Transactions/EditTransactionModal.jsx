@@ -13,8 +13,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useToast } from "@/hooks/use-toast";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { API_BASE_URL } from "@/services/api";
 
 const EditTransactionModal = ({ open, onClose, transaction, onUpdate }) => {
   const { toast } = useToast();

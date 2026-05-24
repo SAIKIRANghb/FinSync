@@ -1,8 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { authAPI } from "../services/api";
-import axios from "axios";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Auth context
 const AuthContext = createContext();
@@ -82,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, {
+      const response = await authAPI.login({
         email: credentials.email,
         password: credentials.password,
       });
@@ -116,7 +113,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+      const response = await authAPI.register({
         name: userData.name,
         email: userData.email,
         password: userData.password,

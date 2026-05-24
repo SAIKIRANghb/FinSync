@@ -4,12 +4,27 @@ const config = require('./config/config');
 const logger = require('./config/logger');
 
 let server;
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
-  logger.info('Connected to MongoDB');
-  server = app.listen(config.port, () => {
-    logger.info(`Listening to port ${config.port}`);
-  });
-});
+
+const getMongoHost = (mongoUrl) => {
+  try {
+    return new URL(mongoUrl).host;
+  } catch (error) {
+    return 'configured MongoDB host';
+  }
+};
+
+const startServer = async () => {
+  try {
+    await mongoose.connect(config.mongoose.url, config.mongoose.options);
+    logger.info('Connected to MongoDB');
+    server = app.listen(config.port, () => {
+      logger.info(`Listening to port ${config.port}`);
+    });
+  } catch (error) {
+    logger.error(`Unable to connect to MongoDB at ${getMongoHost(config.mongoose.url)}`);
+    throw error;
+  }
+};
 
 const exitHandler = () => {
   if (server) {
@@ -36,3 +51,5 @@ process.on('SIGTERM', () => {
     server.close();
   }
 });
+
+startServer().catch(unexpectedErrorHandler);

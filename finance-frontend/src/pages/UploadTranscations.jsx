@@ -29,8 +29,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DashboardLayout from "../components/Dashboard/Layout";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { API_BASE_URL } from "../services/api";
 
 const incomeCategories = [
   "Salary",

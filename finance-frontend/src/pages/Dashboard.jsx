@@ -12,6 +12,7 @@ import LineChartBox from "../components/Dashboard/LineChartBox";
 import TransactionsTable from "../components/Dashboard/TransactionsTable";
 import SearchFilters from "../components/Dashboard/SearchFilters";
 import axios from "axios";
+import { API_BASE_URL } from "../services/api";
 import {
   AccountBalanceWallet as Wallet,
   TrendingUp,
@@ -20,7 +21,6 @@ import {
 } from "@mui/icons-material";
 import { trendSampleData } from "../data/chartData";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const COLORS = [
   "#4285F4",
   "#DB4437",
